@@ -2,39 +2,24 @@
 
 EasyRemote is a cross-platform authorized device connection and management scaffold.
 
-This repository is prepared for the EasyRemote product plan:
+## Phase 6
 
-- Windows + Android first.
-- Flutter UI shell.
-- Local device inventory.
-- Route and protocol abstraction.
-- Adapter metadata registry.
-- WebDAV configuration sync design.
-- Sensitive-data vault interface.
-- RDP / VNC / SSH / SFTP entry abstractions.
-- Future RustDesk research boundary.
+This package adds the next safe development layer:
 
-> Safety rule: this scaffold does not include a working remote-control engine, credential bypass, stealth access, or hidden control behavior. All future connection behavior must require explicit authorization from the device owner or administrator.
+- Vault crypto interface and demo-only codec.
+- Platform keystore interface.
+- Vault record model and repository abstraction.
+- WebDAV settings form.
+- Sync dry-run service and page.
+- Backup preview service and page.
+- Metadata-only backup bundle.
+- Tests for vault, sync dry-run, and backup service.
 
-## Quick start
+This scaffold does not include a working remote-control engine, credential bypass, stealth access, or hidden control behavior.
 
 ```bash
 flutter pub get
+flutter analyze
+flutter test
 flutter run
 ```
-
-## Repository layout
-
-```text
-.
-├── assets/adapters/       Adapter metadata examples
-├── core/                  Future native core notes
-├── docs/                  Product, architecture, security, roadmap
-├── lib/                   Flutter app scaffold
-├── test/                  Basic tests
-└── .github/workflows/     CI placeholder
-```
-
-## Current milestone
-
-The current milestone is a safe app skeleton that can be extended into the MVP.

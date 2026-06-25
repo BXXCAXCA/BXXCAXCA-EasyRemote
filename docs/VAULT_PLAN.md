@@ -1,0 +1,1 @@
+# Vault Plan\n\nPhase 6 includes interfaces and a demo codec only. Replace with real authenticated encryption before storing secrets.\n

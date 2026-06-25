@@ -1,0 +1,12 @@
+# Changelog
+
+## 0.6.0
+
+- Added vault record model.
+- Added vault repository interface and in-memory implementation.
+- Added vault crypto service interface and demo codec.
+- Added platform keystore interface.
+- Added WebDAV settings form.
+- Added sync dry-run service and page.
+- Added backup service and backup preview page.
+- Added tests and documentation.

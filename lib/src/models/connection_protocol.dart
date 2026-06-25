@@ -1,39 +1,22 @@
 import 'package:flutter/material.dart';
 
 enum ConnectionProtocol {
-  desktop,
-  screen,
-  shell,
-  files,
-  nativeSession;
-
-  String get label {
-    switch (this) {
-      case ConnectionProtocol.desktop:
-        return 'Desktop';
-      case ConnectionProtocol.screen:
-        return 'Screen';
-      case ConnectionProtocol.shell:
-        return 'Shell';
-      case ConnectionProtocol.files:
-        return 'Files';
-      case ConnectionProtocol.nativeSession:
-        return 'Native';
-    }
-  }
-
-  IconData get icon {
-    switch (this) {
-      case ConnectionProtocol.desktop:
-        return Icons.desktop_windows_outlined;
-      case ConnectionProtocol.screen:
-        return Icons.fit_screen_outlined;
-      case ConnectionProtocol.shell:
-        return Icons.terminal_outlined;
-      case ConnectionProtocol.files:
-        return Icons.folder_outlined;
-      case ConnectionProtocol.nativeSession:
-        return Icons.touch_app_outlined;
-    }
-  }
+  desktop('desktop'), screen('screen'), shell('shell'), files('files'), nativeSession('native');
+  const ConnectionProtocol(this.id);
+  final String id;
+  String get label => switch (this) {
+    ConnectionProtocol.desktop => 'Desktop',
+    ConnectionProtocol.screen => 'Screen',
+    ConnectionProtocol.shell => 'Shell',
+    ConnectionProtocol.files => 'Files',
+    ConnectionProtocol.nativeSession => 'Native',
+  };
+  IconData get icon => switch (this) {
+    ConnectionProtocol.desktop => Icons.desktop_windows_outlined,
+    ConnectionProtocol.screen => Icons.fit_screen_outlined,
+    ConnectionProtocol.shell => Icons.terminal_outlined,
+    ConnectionProtocol.files => Icons.folder_outlined,
+    ConnectionProtocol.nativeSession => Icons.touch_app_outlined,
+  };
+  static ConnectionProtocol fromId(String id) => ConnectionProtocol.values.firstWhere((p) => p.id == id, orElse: () => ConnectionProtocol.desktop);
 }

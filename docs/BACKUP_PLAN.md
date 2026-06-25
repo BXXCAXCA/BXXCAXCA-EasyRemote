@@ -1,0 +1,1 @@
+# Backup Plan\n\nMetadata-only backup preview. Secrets are excluded.\n
