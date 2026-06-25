@@ -1,0 +1,1 @@
+enum SyncConflictType{localOnly,remoteOnly,bothChanged,identical}class SyncConflict{const SyncConflict({required this.path,required this.type,required this.localHash,required this.remoteHash});final String path;final SyncConflictType type;final String? localHash;final String? remoteHash;bool get needsUserDecision=>type==SyncConflictType.bothChanged;}
