@@ -1,0 +1,1 @@
+import 'sync_conflict.dart';class SyncPlan{const SyncPlan({required this.createdAtIso,required this.conflicts,required this.uploads,required this.downloads});final String createdAtIso;final List<SyncConflict> conflicts;final List<String> uploads;final List<String> downloads;bool get requiresUserDecision=>conflicts.any((c)=>c.needsUserDecision);}
