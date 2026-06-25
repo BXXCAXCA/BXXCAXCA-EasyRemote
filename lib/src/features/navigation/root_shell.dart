@@ -9,9 +9,11 @@ import '../adapters/adapter_registry_page.dart';
 import '../backup/backup_restore_page.dart';
 import '../devices/device_home_page.dart';
 import '../history/history_page.dart';
+import '../migrations/migration_status_page.dart';
 import '../routes/route_planner_page.dart';
 import '../settings/settings_page.dart';
 import '../sync/sync_page.dart';
+import '../sync_plan/sync_plan_page.dart';
 
 class RootShell extends StatefulWidget {
   const RootShell({
@@ -52,11 +54,13 @@ class _RootShellState extends State<RootShell> {
         settingsController: widget.settingsController,
         syncController: widget.syncController,
       ),
+      SyncPlanPage(settingsController: widget.settingsController),
       BackupRestorePage(
         inventoryController: widget.inventoryController,
         settingsController: widget.settingsController,
         adapterRegistryController: widget.adapterRegistryController,
       ),
+      MigrationStatusPage(),
       HistoryPage(controller: widget.activityHistoryController),
       SettingsPage(
         controller: widget.settingsController,
@@ -69,7 +73,9 @@ class _RootShellState extends State<RootShell> {
       _NavItem(Icons.extension_outlined, Icons.extension, 'Adapters'),
       _NavItem(Icons.route_outlined, Icons.route, 'Routes'),
       _NavItem(Icons.sync_outlined, Icons.sync, 'Sync'),
+      _NavItem(Icons.account_tree_outlined, Icons.account_tree, 'Plan'),
       _NavItem(Icons.archive_outlined, Icons.archive, 'Backup'),
+      _NavItem(Icons.storage_outlined, Icons.storage, 'Migrate'),
       _NavItem(Icons.history, Icons.history, 'History'),
       _NavItem(Icons.settings_outlined, Icons.settings, 'Settings'),
     ];
