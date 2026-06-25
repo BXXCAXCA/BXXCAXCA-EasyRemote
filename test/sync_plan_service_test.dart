@@ -1,0 +1,1 @@
+import 'package:flutter_test/flutter_test.dart';import 'package:easyremote/src/services/sync_plan_service.dart';void main(){test('builds sync plan',(){final plan=SyncPlanService().buildPlan(localHashes:{'local':'1','same':'x'},remoteHashes:{'remote':'2','same':'x'});expect(plan.uploads,['local']);expect(plan.downloads,['remote']);expect(plan.requiresUserDecision,isFalse);});}
