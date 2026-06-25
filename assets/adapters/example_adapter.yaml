@@ -1,0 +1,10 @@
+id: example
+name: Example Adapter
+category: metadata
+mode: placeholder
+licenseRisk: low
+enabled: false
+
+notes:
+  - This file is a non-operational metadata example.
+  - Future adapter implementations must respect user authorization and upstream licenses.
