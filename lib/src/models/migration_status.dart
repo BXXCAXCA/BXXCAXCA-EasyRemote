@@ -1,0 +1,1 @@
+class MigrationStatus{const MigrationStatus({required this.currentVersion,required this.latestVersion,required this.pendingVersions});final int currentVersion;final int latestVersion;final List<int> pendingVersions;bool get isUpToDate=>pendingVersions.isEmpty;}
