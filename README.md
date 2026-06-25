@@ -2,20 +2,22 @@
 
 EasyRemote is a cross-platform authorized device connection and management scaffold.
 
-## Phase 6
+## Current phase
 
-This package adds the next safe development layer:
+Phase 8 has been applied directly to `main`.
 
-- Vault crypto interface and demo-only codec.
-- Platform keystore interface.
-- Vault record model and repository abstraction.
-- WebDAV settings form.
-- Sync dry-run service and page.
-- Backup preview service and page.
-- Metadata-only backup bundle.
-- Tests for vault, sync dry-run, and backup service.
+Highlights:
 
-This scaffold does not include a working remote-control engine, credential bypass, stealth access, or hidden control behavior.
+- Crypto adapter registry boundary.
+- Production crypto placeholder boundary.
+- Sync conflict model and detector.
+- Sync plan model and planner service.
+- Sync Plan page.
+- Migration status model, service, and page.
+- HTTP WebDAV client boundary.
+- Phase 8 planning docs and tests.
+
+See `docs/PHASE8_STATUS.md` for the completion checklist.
 
 ```bash
 flutter pub get
