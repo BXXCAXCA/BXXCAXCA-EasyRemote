@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.0
+
+- Added app error code model.
+- Added HTTP request and response descriptor model.
+- Added HTTP transport interface and fake transport.
+- Added sync queue item model.
+- Added sync queue service.
+- Added import check model and service.
+- Added conflict resolution page scaffold.
+- Added import check page scaffold.
+- Added Phase 9 docs and tests.
+
 ## 0.8.0
 
 - Added crypto adapter registry boundary.
