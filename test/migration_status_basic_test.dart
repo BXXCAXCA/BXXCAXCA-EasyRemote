@@ -1,0 +1,1 @@
+import 'package:flutter_test/flutter_test.dart';import 'package:easyremote/src/services/migration_status_service.dart';void main(){test('pending versions are listed',(){final s=MigrationStatusService().calculate(currentVersion:1,latestVersion:3);expect(s.pendingVersions.length,2);});}
