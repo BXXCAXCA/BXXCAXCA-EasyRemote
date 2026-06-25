@@ -1,0 +1,1 @@
+import '../models/migration_status.dart';class MigrationStatusService{MigrationStatus calculate({required int currentVersion,required int latestVersion}){final pending=<int>[];for(var v=currentVersion+1;v<=latestVersion;v++){pending.add(v);}return MigrationStatus(currentVersion:currentVersion,latestVersion:latestVersion,pendingVersions:pending);}}
