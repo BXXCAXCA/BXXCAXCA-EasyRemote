@@ -13,6 +13,9 @@ void main() {
       'docs/API_SURFACE.md',
       'docs/DOC_ENTRY.md',
       'docs/BOUNDARY_CHECKLIST.md',
+      'docs/RELEASE_PREP.md',
+      'docs/ROUTE_SOURCE_USAGE.md',
+      'docs/INTERFACE_BASELINE.md',
     ];
 
     for (final path in paths) {
