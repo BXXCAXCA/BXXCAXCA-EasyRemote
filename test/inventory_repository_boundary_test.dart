@@ -11,6 +11,7 @@ void main() {
       id: 'device-1',
       name: 'Demo device',
       group: 'Lab',
+      isOnline: true,
       kind: DeviceKind.generic,
       routes: [],
       protocols: [ConnectionProtocol.files],
