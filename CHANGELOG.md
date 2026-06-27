@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.17.0
+
+- Bumped package version to 0.17.0+17.
+- Stabilized package surface test.
+- Added simple page construction test.
+- Added Phase 17 notes.
+
 ## 0.16.0
 
 - Added repository barrel file.
