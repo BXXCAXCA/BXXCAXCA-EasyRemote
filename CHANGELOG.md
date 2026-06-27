@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.29.0
+
+- Added WebDAV status mapper.
+- Added WebDAV status mapper tests.
+- Added WebDAV status mapper barrel test.
+- Updated transport WebDAV client tests.
+- Added Phase 33 notes.
+
 ## 0.28.0
 
 - Added WebDAV response parser.
