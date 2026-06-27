@@ -2,17 +2,20 @@ import 'http_transport.dart';
 import 'webdav_client.dart';
 import 'webdav_request_builder.dart';
 import 'webdav_response_parser.dart';
+import 'webdav_status_mapper.dart';
 
 class TransportWebDavClient implements WebDavClient {
   const TransportWebDavClient({
     required this.builder,
     required this.transport,
     this.parser = const WebDavResponseParser(),
+    this.statusMapper = const WebDavStatusMapper(),
   });
 
   final WebDavRequestBuilder builder;
   final HttpTransport transport;
   final WebDavResponseParser parser;
+  final WebDavStatusMapper statusMapper;
 
   @override
   Future<bool> ping() async {
@@ -42,7 +45,8 @@ class TransportWebDavClient implements WebDavClient {
   Future<void> writeText({required String path, required String content}) async {
     final response = await transport.send(builder.writeText(path: path, content: content));
     if (!response.isSuccess) {
-      throw StateError('WebDAV write descriptor failed with status ${response.statusCode}.');
+      final code = statusMapper.mapStatus(response.statusCode);
+      throw StateError('WebDAV write failed: ${code.code}.');
     }
   }
 }
