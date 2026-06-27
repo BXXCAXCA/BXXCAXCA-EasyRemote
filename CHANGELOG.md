@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.23.0
+
+- Added demo codec service test.
+- Updated device constructor tests.
+- Added Phase 27 notes.
+
 ## 0.22.0
 
 - Added inventory controller contract test.
