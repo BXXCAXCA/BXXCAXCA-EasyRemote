@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.21.0
 
 - Added routing models barrel file.
 - Added routing models barrel test.
@@ -14,6 +14,9 @@
 - Added crypto boundary contract test.
 - Added HTTP transport contract test.
 - Added contract tests document.
+- Added settings controller contract test.
+- Added repository interface contract test.
+- Updated contract test guidance.
 
 ## 0.20.0
 
