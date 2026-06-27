@@ -17,3 +17,4 @@ export 'sync_plan_service.dart';
 export 'sync_queue_service.dart';
 export 'vault_crypto_service.dart';
 export 'webdav_client.dart';
+export 'webdav_request_builder.dart';
