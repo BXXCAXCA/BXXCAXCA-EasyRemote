@@ -14,6 +14,7 @@ import '../routes/route_planner_page.dart';
 import '../settings/settings_page.dart';
 import '../sync/sync_page.dart';
 import '../sync_plan/sync_plan_page.dart';
+import '../tools/tools_page.dart';
 
 class RootShell extends StatefulWidget {
   const RootShell({
@@ -60,6 +61,7 @@ class _RootShellState extends State<RootShell> {
         settingsController: widget.settingsController,
         adapterRegistryController: widget.adapterRegistryController,
       ),
+      const ToolsPage(),
       MigrationStatusPage(),
       HistoryPage(controller: widget.activityHistoryController),
       SettingsPage(
@@ -75,6 +77,7 @@ class _RootShellState extends State<RootShell> {
       _NavItem(Icons.sync_outlined, Icons.sync, 'Sync'),
       _NavItem(Icons.account_tree_outlined, Icons.account_tree, 'Plan'),
       _NavItem(Icons.archive_outlined, Icons.archive, 'Backup'),
+      _NavItem(Icons.construction_outlined, Icons.construction, 'Tools'),
       _NavItem(Icons.storage_outlined, Icons.storage, 'Migrate'),
       _NavItem(Icons.history, Icons.history, 'History'),
       _NavItem(Icons.settings_outlined, Icons.settings, 'Settings'),
