@@ -5,6 +5,7 @@ import 'package:easyremote/src/models/managed_device.dart';
 import 'package:easyremote/src/models/connection_protocol.dart';
 import 'package:easyremote/src/models/device_kind.dart';
 import 'package:easyremote/src/models/route_endpoint.dart';
+import 'package:easyremote/src/models/route_source.dart';
 
 void main() {
   test('settings serializes to json map', () {
@@ -27,6 +28,8 @@ void main() {
         RouteEndpoint(
           id: 'r1',
           displayName: 'Route',
+          source: 'local',
+          sourceType: RouteSourceType.local,
           addressLabel: 'local',
           isAvailable: true,
           latencyMs: 1,
