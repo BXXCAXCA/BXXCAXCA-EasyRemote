@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:easyremote/src/models/app_error_code.dart';
 import 'package:easyremote/src/models/http_request_descriptor.dart';
 import 'package:easyremote/src/services/http_transport.dart';
 import 'package:easyremote/src/services/transport_webdav_client.dart';
@@ -65,6 +66,32 @@ void main() {
     );
 
     await buildClient(transport).writeText(path: 'config/settings.json', content: '{}');
+  });
+
+  test('transport WebDAV client tryWriteText returns success result', () async {
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
+      statusCode: 204,
+      headers: {},
+      body: '',
+    );
+
+    final result = await buildClient(transport).tryWriteText(path: 'config/settings.json', content: '{}');
+    expect(result.success, isTrue);
+    expect(result.statusCode, 204);
+  });
+
+  test('transport WebDAV client tryWriteText returns mapped failure result', () async {
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
+      statusCode: 401,
+      headers: {},
+      body: '',
+    );
+
+    final result = await buildClient(transport).tryWriteText(path: 'config/settings.json', content: '{}');
+    expect(result.success, isFalse);
+    expect(result.errorCode, AppErrorCode.authRequired);
   });
 
   test('transport WebDAV client write reports mapped auth error', () async {
