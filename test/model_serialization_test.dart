@@ -23,6 +23,7 @@ void main() {
       id: 'd1',
       name: 'Demo',
       group: 'Group',
+      isOnline: true,
       kind: DeviceKind.generic,
       routes: [
         RouteEndpoint(
