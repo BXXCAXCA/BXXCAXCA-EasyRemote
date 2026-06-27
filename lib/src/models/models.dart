@@ -1,3 +1,4 @@
+export 'activity_event.dart';
 export 'app_error_code.dart';
 export 'app_settings.dart';
 export 'backup_bundle.dart';
