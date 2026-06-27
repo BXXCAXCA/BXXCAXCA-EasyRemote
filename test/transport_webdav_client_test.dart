@@ -23,6 +23,27 @@ void main() {
     expect(await buildClient(transport).ping(), isTrue);
   });
 
+  test('transport WebDAV client lists parsed resources', () async {
+    const body = '''
+<d:multistatus xmlns:d="DAV:">
+  <d:response>
+    <d:href>/dav/config/settings.json</d:href>
+    <d:propstat><d:prop><d:getcontentlength>2</d:getcontentlength></d:prop></d:propstat>
+  </d:response>
+</d:multistatus>
+''';
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config'] = const HttpResponseDescriptor(
+      statusCode: 207,
+      headers: {},
+      body: body,
+    );
+
+    final resources = await buildClient(transport).list('config');
+    expect(resources, hasLength(1));
+    expect(resources.first.path, '/dav/config/settings.json');
+  });
+
   test('transport WebDAV client reads text body', () async {
     final transport = FakeHttpTransport();
     transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
