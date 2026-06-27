@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.19.0
+
+- Bumped package version to 0.19.0+19.
+- Added inventory repository boundary tests.
+- Added sync planning boundary tests.
+- Added current status document.
+
 ## 0.18.0
 
 - Added analyze risk notes.
