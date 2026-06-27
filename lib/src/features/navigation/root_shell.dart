@@ -61,7 +61,7 @@ class _RootShellState extends State<RootShell> {
         settingsController: widget.settingsController,
         adapterRegistryController: widget.adapterRegistryController,
       ),
-      const ToolsPage(),
+      ToolsPage(settingsController: widget.settingsController),
       MigrationStatusPage(),
       HistoryPage(controller: widget.activityHistoryController),
       SettingsPage(
