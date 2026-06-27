@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.20.0
 
 - Fixed vault record smoke test constructor.
 - Fixed route endpoint serialization test constructor.
@@ -11,6 +11,8 @@
 - Added vault record constructor test.
 - Added sync plan service behavior test.
 - Added release prep document.
+- Added route source direct test.
+- Added Phase 22 notes.
 
 ## 0.19.0
 
