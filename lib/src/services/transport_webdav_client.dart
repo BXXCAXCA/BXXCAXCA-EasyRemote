@@ -1,15 +1,18 @@
 import 'http_transport.dart';
 import 'webdav_client.dart';
 import 'webdav_request_builder.dart';
+import 'webdav_response_parser.dart';
 
 class TransportWebDavClient implements WebDavClient {
   const TransportWebDavClient({
     required this.builder,
     required this.transport,
+    this.parser = const WebDavResponseParser(),
   });
 
   final WebDavRequestBuilder builder;
   final HttpTransport transport;
+  final WebDavResponseParser parser;
 
   @override
   Future<bool> ping() async {
@@ -23,7 +26,7 @@ class TransportWebDavClient implements WebDavClient {
     if (!response.isSuccess) {
       return const [];
     }
-    return const [];
+    return parser.parseResources(response.body);
   }
 
   @override
