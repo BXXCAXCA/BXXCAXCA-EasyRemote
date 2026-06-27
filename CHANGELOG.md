@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.24.0
+
+- Simplified conflict page review marker.
+- Expanded page construction test.
+- Added Phase 28 notes.
+
 ## 0.23.0
 
 - Added demo codec service test.
