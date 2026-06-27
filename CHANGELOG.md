@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.22.0
+
+- Added inventory controller contract test.
+- Added vault controller contract test.
+- Added activity history controller contract test.
+- Added implementation readiness document.
+- Expanded controller contract guidance.
+- Added implementation readiness document presence check.
+
 ## 0.21.0
 
 - Added routing models barrel file.
