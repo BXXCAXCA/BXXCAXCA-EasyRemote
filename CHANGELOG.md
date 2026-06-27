@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.14.0
+
+- Bumped package version to 0.14.0+14.
+- Added check groups document.
+- Added issue notes document.
+- Added work board document.
+- Added app error code test.
+- Added sync queue item test.
+- Added migration status edge test.
+
 ## 0.13.0
 
 - Added tools page basic widget test.
