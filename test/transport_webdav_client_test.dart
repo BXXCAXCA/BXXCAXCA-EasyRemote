@@ -67,11 +67,25 @@ void main() {
     await buildClient(transport).writeText(path: 'config/settings.json', content: '{}');
   });
 
-  test('transport WebDAV client write throws on failed response', () async {
+  test('transport WebDAV client write reports mapped auth error', () async {
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
+      statusCode: 401,
+      headers: {},
+      body: '',
+    );
+
+    expect(
+      buildClient(transport).writeText(path: 'config/settings.json', content: '{}'),
+      throwsA(isA<StateError>().having((error) => error.message, 'message', contains('authRequired'))),
+    );
+  });
+
+  test('transport WebDAV client write reports mapped missing resource error', () async {
     final transport = FakeHttpTransport();
     expect(
       buildClient(transport).writeText(path: 'config/missing.json', content: '{}'),
-      throwsA(isA<StateError>()),
+      throwsA(isA<StateError>().having((error) => error.message, 'message', contains('remoteNotFound'))),
     );
   });
 }
