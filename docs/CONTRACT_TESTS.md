@@ -8,7 +8,8 @@ Current contract areas:
 - production crypto boundary
 - HTTP transport boundary
 - routing models
-- repository memory implementations
+- repository interfaces and memory implementations
+- settings controller behavior
 
 Rules:
 
@@ -16,6 +17,7 @@ Rules:
 2. Keep production crypto placeholders explicit until a reviewed adapter is added.
 3. Test constructor surfaces for models used across pages and services.
 4. Add docs before replacing a placeholder with a concrete implementation.
+5. Keep controller tests focused on repository interaction and state changes.
 
 Local command:
 
