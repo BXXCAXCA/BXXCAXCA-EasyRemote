@@ -12,7 +12,6 @@ export 'managed_device.dart';
 export 'migration_status.dart';
 export 'project_check_item.dart';
 export 'remote_manifest.dart';
-export 'restore_validation_result.dart';
 export 'route_endpoint.dart';
 export 'sync_conflict.dart';
 export 'sync_dry_run_result.dart';
