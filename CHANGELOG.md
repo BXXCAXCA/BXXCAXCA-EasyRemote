@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.27.0
+
+- Added transport WebDAV client skeleton.
+- Added fake transport flow tests for transport WebDAV client.
+- Exported transport WebDAV client from service barrel.
+- Added transport WebDAV client barrel test.
+- Added Phase 31 notes.
+
 ## 0.26.0
 
 - Added WebDAV request builder.
