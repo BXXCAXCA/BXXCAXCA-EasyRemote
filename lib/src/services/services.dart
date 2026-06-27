@@ -19,3 +19,4 @@ export 'transport_webdav_client.dart';
 export 'vault_crypto_service.dart';
 export 'webdav_client.dart';
 export 'webdav_request_builder.dart';
+export 'webdav_response_parser.dart';
