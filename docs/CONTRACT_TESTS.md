@@ -10,6 +10,9 @@ Current contract areas:
 - routing models
 - repository interfaces and memory implementations
 - settings controller behavior
+- inventory controller behavior
+- vault controller behavior
+- activity history controller behavior
 
 Rules:
 
