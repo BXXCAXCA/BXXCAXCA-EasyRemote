@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.28.0
+
+- Added WebDAV response parser.
+- Added WebDAV response parser fixture tests.
+- Connected transport WebDAV list flow to parser.
+- Exported WebDAV response parser from service barrel.
+- Added WebDAV response parser barrel test.
+- Added Phase 32 notes.
+
 ## 0.27.0
 
 - Added transport WebDAV client skeleton.
