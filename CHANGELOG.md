@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.25.0
+
+- Added version state document.
+- Added WebDAV implementation plan.
+- Added static closeout document.
+- Expanded document presence checks.
+
 ## 0.24.0
 
 - Simplified conflict page review marker.
