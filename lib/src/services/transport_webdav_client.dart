@@ -1,4 +1,3 @@
-import '../models/http_request_descriptor.dart';
 import 'http_transport.dart';
 import 'webdav_client.dart';
 import 'webdav_request_builder.dart';
