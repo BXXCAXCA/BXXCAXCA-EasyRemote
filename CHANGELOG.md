@@ -7,6 +7,13 @@
 - Added route source usage document.
 - Added interface baseline document.
 - Expanded document presence checks.
+- Added WebDAV client interface.
+- Added key derivation params model.
+- Added encrypted payload envelope model.
+- Added WebDAV boundary contract test.
+- Added crypto boundary contract test.
+- Added HTTP transport contract test.
+- Added contract tests document.
 
 ## 0.20.0
 
