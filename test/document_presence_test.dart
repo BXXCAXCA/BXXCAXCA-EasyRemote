@@ -18,6 +18,9 @@ void main() {
       'docs/INTERFACE_BASELINE.md',
       'docs/CONTRACT_TESTS.md',
       'docs/IMPLEMENTATION_READINESS.md',
+      'docs/VERSION_STATE.md',
+      'docs/WEBDAV_IMPLEMENTATION_PLAN.md',
+      'docs/STATIC_CLOSEOUT.md',
     ];
 
     for (final path in paths) {
