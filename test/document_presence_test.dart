@@ -17,6 +17,7 @@ void main() {
       'docs/ROUTE_SOURCE_USAGE.md',
       'docs/INTERFACE_BASELINE.md',
       'docs/CONTRACT_TESTS.md',
+      'docs/IMPLEMENTATION_READINESS.md',
     ];
 
     for (final path in paths) {
