@@ -11,7 +11,6 @@ export 'migration_status_service.dart';
 export 'production_crypto_adapter.dart';
 export 'project_review_service.dart';
 export 'remote_manifest_service.dart';
-export 'restore_validator.dart';
 export 'sync_conflict_detector.dart';
 export 'sync_dry_run_service.dart';
 export 'sync_plan_service.dart';
