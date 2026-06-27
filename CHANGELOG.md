@@ -7,6 +7,10 @@
 - Added documentation entry file.
 - Added boundary checklist.
 - Added document presence test.
+- Added route endpoint behavior test.
+- Added vault record constructor test.
+- Added sync plan service behavior test.
+- Added release prep document.
 
 ## 0.19.0
 
