@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.15.0
+
+- Added model barrel file.
+- Added service barrel file.
+- Added barrel export tests.
+- Fixed barrel exports to remove missing files.
+- Added API surface document.
+
 ## 0.14.0
 
 - Bumped package version to 0.14.0+14.
