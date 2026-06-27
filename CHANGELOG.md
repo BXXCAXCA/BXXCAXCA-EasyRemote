@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.13.0
+
+- Added tools page basic widget test.
+- Added service index document.
+- Added model serialization tests.
+- Added Phase 13 notes.
+
+## 0.12.0
+
+- Added repository index document.
+- Added boundary notes document.
+- Added local checks document.
+- Added repository structure test.
+- Added tool services smoke test.
+
+## 0.11.0
+
+- Added capability toggle model and service.
+- Added project review model, service, and page.
+- Added project review entry to Tools page.
+- Added local review tests.
+
+## 0.10.0
+
+- Added item result model.
+- Added HTTP status mapper.
+- Added config audit service.
+- Added work item review page.
+- Added mapper and audit tests.
+
 ## 0.9.0
 
 - Added app error code model.
