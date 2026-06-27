@@ -1,5 +1,13 @@
 # Changelog
 
+## Next
+
+- Added routing models barrel file.
+- Added routing models barrel test.
+- Added route source usage document.
+- Added interface baseline document.
+- Expanded document presence checks.
+
 ## 0.20.0
 
 - Fixed vault record smoke test constructor.
