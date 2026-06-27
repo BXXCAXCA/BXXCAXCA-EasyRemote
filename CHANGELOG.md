@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.26.0
+
+- Added WebDAV request builder.
+- Added WebDAV request builder tests.
+- Exported WebDAV request builder from service barrel.
+- Added WebDAV request builder barrel test.
+- Added Phase 30 notes.
+
 ## 0.25.0
 
 - Added version state document.
