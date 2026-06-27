@@ -1,5 +1,13 @@
 # Changelog
 
+## Next
+
+- Fixed vault record smoke test constructor.
+- Fixed route endpoint serialization test constructor.
+- Added documentation entry file.
+- Added boundary checklist.
+- Added document presence test.
+
 ## 0.19.0
 
 - Bumped package version to 0.19.0+19.
