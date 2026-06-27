@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.30.0
+
+- Added WebDAV operation result.
+- Added WebDAV operation result tests.
+- Added typed WebDAV write result flow.
+- Added WebDAV operation result barrel test.
+- Added Phase 34 notes.
+
 ## 0.29.0
 
 - Added WebDAV status mapper.
