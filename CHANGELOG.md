@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.0
+
+- Added repository barrel file.
+- Added state barrel file.
+- Added package surface test.
+- Added page index document.
+- Added activity event to model barrel.
+- Fixed repository barrel exports.
+
 ## 0.15.0
 
 - Added model barrel file.
