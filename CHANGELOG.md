@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.18.0
+
+- Added analyze risk notes.
+- Added memory repository smoke tests.
+- Added check naming document.
+
 ## 0.17.0
 
 - Bumped package version to 0.17.0+17.
