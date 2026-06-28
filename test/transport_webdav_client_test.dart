@@ -57,6 +57,34 @@ void main() {
     expect(body, contains('ok'));
   });
 
+  test('transport WebDAV client tryReadText returns success result', () async {
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
+      statusCode: 200,
+      headers: {},
+      body: '{"ok":true}',
+    );
+
+    final result = await buildClient(transport).tryReadText('config/settings.json');
+    expect(result.success, isTrue);
+    expect(result.statusCode, 200);
+    expect(result.content, contains('ok'));
+  });
+
+  test('transport WebDAV client tryReadText returns mapped failure result', () async {
+    final transport = FakeHttpTransport();
+    transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
+      statusCode: 404,
+      headers: {},
+      body: '',
+    );
+
+    final result = await buildClient(transport).tryReadText('config/settings.json');
+    expect(result.success, isFalse);
+    expect(result.statusCode, 404);
+    expect(result.errorCode, AppErrorCode.remoteNotFound);
+  });
+
   test('transport WebDAV client write accepts success response', () async {
     final transport = FakeHttpTransport();
     transport.responses['https://example.invalid/dav/config/settings.json'] = const HttpResponseDescriptor(
