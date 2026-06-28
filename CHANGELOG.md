@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.31.0
+
+- Bumped package version to 0.31.0+31.
+- Added WebDAV read result.
+- Added typed WebDAV read result flow.
+- Exported WebDAV read result from service barrel.
+- Added typed WebDAV read flow tests.
+- Added WebDAV read result barrel test.
+
 ## 0.30.0
 
 - Added WebDAV operation result.
