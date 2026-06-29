@@ -1,6 +1,6 @@
 name: easyremote
 description: Cross-platform authorized device management scaffold.
-version: 0.32.0+32
+version: 0.33.0+33
 publish_to: none
 
 environment:
