@@ -1,5 +1,6 @@
 import 'http_transport.dart';
 import 'webdav_client.dart';
+import 'webdav_list_result.dart';
 import 'webdav_operation_result.dart';
 import 'webdav_read_result.dart';
 import 'webdav_request_builder.dart';
@@ -25,13 +26,27 @@ class TransportWebDavClient implements WebDavClient {
     return response.isSuccess;
   }
 
+  Future<WebDavListResult> tryList(String path) async {
+    final response = await transport.send(builder.list(path));
+    if (response.isSuccess) {
+      return WebDavListResult.ok(
+        statusCode: response.statusCode,
+        resources: parser.parseResources(response.body),
+      );
+    }
+    return WebDavListResult.failed(
+      statusCode: response.statusCode,
+      errorCode: statusMapper.mapStatus(response.statusCode),
+    );
+  }
+
   @override
   Future<List<WebDavResource>> list(String path) async {
-    final response = await transport.send(builder.list(path));
-    if (!response.isSuccess) {
+    final result = await tryList(path);
+    if (!result.success) {
       return const [];
     }
-    return parser.parseResources(response.body);
+    return result.resources;
   }
 
   Future<WebDavReadResult> tryReadText(String path) async {
