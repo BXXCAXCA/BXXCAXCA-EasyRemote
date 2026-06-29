@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.35.0
+
+- Bumped package version to 0.35.0+35.
+- Added WebDAV check preview page.
+- Added WebDAV check entry to Tools page.
+- Added WebDAV check page test.
+- Added WebDAV check tool entry test.
+
 ## 0.34.0
 
 - Bumped package version to 0.34.0+34.
