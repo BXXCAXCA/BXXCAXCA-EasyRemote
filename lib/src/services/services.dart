@@ -18,6 +18,7 @@ export 'sync_queue_service.dart';
 export 'transport_webdav_client.dart';
 export 'vault_crypto_service.dart';
 export 'webdav_client.dart';
+export 'webdav_list_result.dart';
 export 'webdav_operation_result.dart';
 export 'webdav_read_result.dart';
 export 'webdav_request_builder.dart';
