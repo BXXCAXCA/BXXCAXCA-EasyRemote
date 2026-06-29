@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.33.0
+
+- Bumped package version to 0.33.0+33.
+- Added typed WebDAV ping result flow.
+- Kept legacy WebDAV ping boolean flow compatible.
+- Added WebDAV ping result tests.
+
 ## 0.32.0
 
 - Bumped package version to 0.32.0+32.
