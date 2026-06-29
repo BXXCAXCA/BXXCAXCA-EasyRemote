@@ -20,10 +20,21 @@ class TransportWebDavClient implements WebDavClient {
   final WebDavResponseParser parser;
   final WebDavStatusMapper statusMapper;
 
+  Future<WebDavOperationResult> tryPing() async {
+    final response = await transport.send(builder.ping());
+    if (response.isSuccess) {
+      return WebDavOperationResult.ok(statusCode: response.statusCode);
+    }
+    return WebDavOperationResult.failed(
+      statusCode: response.statusCode,
+      errorCode: statusMapper.mapStatus(response.statusCode),
+    );
+  }
+
   @override
   Future<bool> ping() async {
-    final response = await transport.send(builder.ping());
-    return response.isSuccess;
+    final result = await tryPing();
+    return result.success;
   }
 
   Future<WebDavListResult> tryList(String path) async {
