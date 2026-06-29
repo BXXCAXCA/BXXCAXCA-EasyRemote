@@ -3,6 +3,7 @@ import '../../state/settings_controller.dart';
 import '../conflicts/conflict_resolution_page.dart';
 import '../import_check/import_check_page.dart';
 import '../project_review/project_review_page.dart';
+import '../webdav_check/webdav_check_page.dart';
 import '../work_items/work_items_page.dart';
 
 class ToolsPage extends StatelessWidget {
@@ -44,6 +45,16 @@ class ToolsPage extends StatelessWidget {
               subtitle: const Text('Review planned metadata items.'),
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => WorkItemsPage()),
+              ),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.cloud_done_outlined),
+              title: const Text('WebDAV check'),
+              subtitle: const Text('Preview reachability and listing checks.'),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const WebDavCheckPage()),
               ),
             ),
           ),
