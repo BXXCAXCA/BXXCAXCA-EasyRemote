@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.32.0
+
+- Bumped package version to 0.32.0+32.
+- Added WebDAV list result.
+- Added typed WebDAV list result flow.
+- Exported WebDAV list result from service barrel.
+- Added WebDAV list result tests.
+- Added WebDAV list result barrel test.
+
 ## 0.31.0
 
 - Bumped package version to 0.31.0+31.
