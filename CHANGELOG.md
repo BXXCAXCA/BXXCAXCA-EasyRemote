@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.34.0
+
+- Bumped package version to 0.34.0+34.
+- Added WebDAV check report model.
+- Added WebDAV check service for ping and list summary.
+- Exported WebDAV check service from service barrel.
+- Added WebDAV check service tests.
+- Added WebDAV check barrel test.
+
 ## 0.33.0
 
 - Bumped package version to 0.33.0+33.
