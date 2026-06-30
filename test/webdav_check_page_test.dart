@@ -11,6 +11,7 @@ void main() {
     expect(find.byTooltip('Refresh check'), findsOneWidget);
     expect(find.text('Demo scenario'), findsOneWidget);
     expect(find.text('WebDAV check preview'), findsOneWidget);
+    expect(find.textContaining('2/2 checks passed'), findsOneWidget);
     expect(find.textContaining('Last checked:'), findsOneWidget);
     expect(find.text('Server reachability'), findsOneWidget);
     expect(find.text('Directory listing'), findsOneWidget);
@@ -25,6 +26,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
+    expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
@@ -39,6 +41,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
+    expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
   });
 }
