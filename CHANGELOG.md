@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.36.0
+
+- Bumped package version to 0.36.0+36.
+- Added WebDAV check demo mode selection.
+- Added missing-root demo state for the WebDAV check page.
+- Expanded WebDAV check page tests for success and missing-root scenarios.
+
 ## 0.35.0
 
 - Bumped package version to 0.35.0+35.
