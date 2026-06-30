@@ -81,7 +81,9 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                         report.ok ? Icons.check_circle_outline : Icons.info_outline,
                       ),
                       title: const Text('WebDAV check preview'),
-                      subtitle: Text(report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'),
+                      subtitle: Text(
+                        '${report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'}\nLast checked: ${report.checkedAtIso}',
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
