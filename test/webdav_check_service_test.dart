@@ -39,6 +39,10 @@ void main() {
     final report = await buildService(transport).run(listPath: 'config');
 
     expect(report.ok, isTrue);
+    expect(report.totalCount, 2);
+    expect(report.passedCount, 2);
+    expect(report.failedCount, 0);
+    expect(report.summaryText, '2/2 checks passed');
     expect(report.checkedAtIso, isNotEmpty);
     expect(DateTime.tryParse(report.checkedAtIso), isNotNull);
     expect(report.items, hasLength(2));
@@ -56,6 +60,10 @@ void main() {
     final report = await buildService(transport).run(listPath: 'config');
 
     expect(report.ok, isFalse);
+    expect(report.totalCount, 2);
+    expect(report.passedCount, 0);
+    expect(report.failedCount, 2);
+    expect(report.summaryText, '0/2 checks passed');
     expect(report.checkedAtIso, isNotEmpty);
     expect(report.items.first.errorCode, AppErrorCode.authRequired);
     expect(report.items.last.id, 'list');
