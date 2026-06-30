@@ -47,6 +47,7 @@ void main() {
     expect(DateTime.tryParse(report.checkedAtIso), isNotNull);
     expect(report.items, hasLength(2));
     expect(report.items.map((item) => item.id), containsAll(['ping', 'list']));
+    expect(report.items.every((item) => item.statusLabel == 'OK'), isTrue);
   });
 
   test('check service skips list after failed ping', () async {
@@ -66,8 +67,10 @@ void main() {
     expect(report.summaryText, '0/2 checks passed');
     expect(report.checkedAtIso, isNotEmpty);
     expect(report.items.first.errorCode, AppErrorCode.authRequired);
+    expect(report.items.first.statusLabel, 'Needs attention');
     expect(report.items.last.id, 'list');
     expect(report.items.last.ok, isFalse);
+    expect(report.items.last.statusLabel, 'Needs attention');
     expect(report.items.last.detail, contains('Skipped'));
   });
 }
