@@ -11,11 +11,25 @@ void main() {
     expect(find.byTooltip('Refresh check'), findsOneWidget);
     expect(find.text('Demo scenario'), findsOneWidget);
     expect(find.text('WebDAV check preview'), findsOneWidget);
+    expect(find.text('Empty folder'), findsOneWidget);
     expect(find.textContaining('2/2 checks passed'), findsOneWidget);
     expect(find.textContaining('Last checked:'), findsOneWidget);
     expect(find.text('Server reachability'), findsOneWidget);
     expect(find.text('Directory listing'), findsOneWidget);
     expect(find.textContaining('All demo checks passed.'), findsOneWidget);
+    expect(find.text('OK'), findsNWidgets(2));
+  });
+
+  testWidgets('webdav check page switches to empty folder demo report', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: WebDavCheckPage()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Empty folder'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('All demo checks passed.'), findsOneWidget);
+    expect(find.textContaining('2/2 checks passed'), findsOneWidget);
+    expect(find.text('Found 0 resources at config.'), findsOneWidget);
     expect(find.text('OK'), findsNWidgets(2));
   });
 
