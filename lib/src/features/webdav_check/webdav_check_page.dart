@@ -82,7 +82,7 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                       ),
                       title: const Text('WebDAV check preview'),
                       subtitle: Text(
-                        '${report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'}\nLast checked: ${report.checkedAtIso}',
+                        '${report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'}\n${report.summaryText}\nLast checked: ${report.checkedAtIso}',
                       ),
                     ),
                   ),
