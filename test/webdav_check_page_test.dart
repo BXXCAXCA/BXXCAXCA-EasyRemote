@@ -11,9 +11,10 @@ void main() {
     expect(find.byTooltip('Refresh check'), findsOneWidget);
     expect(find.text('Demo scenario'), findsOneWidget);
     expect(find.text('WebDAV check preview'), findsOneWidget);
+    expect(find.textContaining('Last checked:'), findsOneWidget);
     expect(find.text('Server reachability'), findsOneWidget);
     expect(find.text('Directory listing'), findsOneWidget);
-    expect(find.text('All demo checks passed.'), findsOneWidget);
+    expect(find.textContaining('All demo checks passed.'), findsOneWidget);
   });
 
   testWidgets('webdav check page switches to missing root demo report', (tester) async {
@@ -23,7 +24,7 @@ void main() {
     await tester.tap(find.text('Missing root'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Some demo checks need attention.'), findsOneWidget);
+    expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
@@ -37,7 +38,7 @@ void main() {
     await tester.tap(find.byTooltip('Refresh check'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Some demo checks need attention.'), findsOneWidget);
+    expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
   });
 }
