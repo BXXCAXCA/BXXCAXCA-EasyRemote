@@ -93,7 +93,14 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                         leading: Icon(item.ok ? Icons.check_outlined : Icons.error_outline),
                         title: Text(item.title),
                         subtitle: Text(item.detail),
-                        trailing: item.statusCode == null ? null : Text('${item.statusCode}'),
+                        trailing: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(item.statusLabel),
+                            if (item.statusCode != null) Text('${item.statusCode}'),
+                          ],
+                        ),
                       ),
                     ),
                   ),
