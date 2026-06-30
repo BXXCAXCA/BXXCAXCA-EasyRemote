@@ -21,9 +21,11 @@ class WebDavCheckItem {
 class WebDavCheckReport {
   const WebDavCheckReport({
     required this.items,
+    this.checkedAtIso = '',
   });
 
   final List<WebDavCheckItem> items;
+  final String checkedAtIso;
 
   bool get ok => items.every((item) => item.ok);
 }
