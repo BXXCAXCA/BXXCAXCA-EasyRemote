@@ -8,6 +8,7 @@ class WebDavCheckService {
   final TransportWebDavClient client;
 
   Future<WebDavCheckReport> run({String listPath = '/'}) async {
+    final checkedAtIso = DateTime.now().toUtc().toIso8601String();
     final ping = await client.tryPing();
     final items = <WebDavCheckItem>[
       WebDavCheckItem(
@@ -53,7 +54,10 @@ class WebDavCheckService {
       );
     }
 
-    return WebDavCheckReport(items: items);
+    return WebDavCheckReport(
+      items: items,
+      checkedAtIso: checkedAtIso,
+    );
   }
 
   String _detail({
