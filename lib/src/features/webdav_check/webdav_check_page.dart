@@ -22,12 +22,21 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
   @override
   void initState() {
     super.initState();
-    _reportFuture = _buildDemoService(_mode).run(listPath: 'config');
+    _reportFuture = _runCheck(_mode);
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('WebDAV Check')),
+        appBar: AppBar(
+          title: const Text('WebDAV Check'),
+          actions: [
+            IconButton(
+              tooltip: 'Refresh check',
+              icon: const Icon(Icons.refresh),
+              onPressed: _reload,
+            ),
+          ],
+        ),
         body: FutureBuilder<WebDavCheckReport>(
           future: _reportFuture,
           builder: (context, snapshot) {
@@ -93,12 +102,20 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
         ),
       );
 
+  void _reload() {
+    setState(() {
+      _reportFuture = _runCheck(_mode);
+    });
+  }
+
   void _selectMode(_WebDavCheckDemoMode mode) {
     setState(() {
       _mode = mode;
-      _reportFuture = _buildDemoService(mode).run(listPath: 'config');
+      _reportFuture = _runCheck(mode);
     });
   }
+
+  Future<WebDavCheckReport> _runCheck(_WebDavCheckDemoMode mode) => _buildDemoService(mode).run(listPath: 'config');
 
   WebDavCheckService _buildDemoService(_WebDavCheckDemoMode mode) {
     const body = '''
