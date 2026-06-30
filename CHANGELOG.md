@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.39.0
+
+- Bumped package version to 0.39.0+39.
+- Added WebDAV check summary counts.
+- Displayed WebDAV check summary text on the preview page.
+- Expanded WebDAV check service and page tests for summary behavior.
+
 ## 0.38.0
 
 - Bumped package version to 0.38.0+38.
