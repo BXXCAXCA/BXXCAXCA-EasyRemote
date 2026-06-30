@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.40.0
+
+- Bumped package version to 0.40.0+40.
+- Added WebDAV check item status labels.
+- Displayed WebDAV check item status labels on the preview page.
+- Expanded WebDAV check service and page tests for item status labels.
+
 ## 0.39.0
 
 - Bumped package version to 0.39.0+39.
