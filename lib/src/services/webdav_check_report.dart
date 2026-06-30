@@ -27,5 +27,10 @@ class WebDavCheckReport {
   final List<WebDavCheckItem> items;
   final String checkedAtIso;
 
-  bool get ok => items.every((item) => item.ok);
+  int get totalCount => items.length;
+  int get passedCount => items.where((item) => item.ok).length;
+  int get failedCount => totalCount - passedCount;
+  bool get ok => failedCount == 0;
+
+  String get summaryText => '$passedCount/$totalCount checks passed';
 }
