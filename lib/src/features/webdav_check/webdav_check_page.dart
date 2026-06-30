@@ -6,6 +6,8 @@ import '../../services/webdav_check_report.dart';
 import '../../services/webdav_check_service.dart';
 import '../../services/webdav_request_builder.dart';
 
+enum _WebDavCheckDemoMode { success, missingRoot }
+
 class WebDavCheckPage extends StatefulWidget {
   const WebDavCheckPage({super.key});
 
@@ -14,12 +16,13 @@ class WebDavCheckPage extends StatefulWidget {
 }
 
 class _WebDavCheckPageState extends State<WebDavCheckPage> {
-  late final Future<WebDavCheckReport> _reportFuture;
+  _WebDavCheckDemoMode _mode = _WebDavCheckDemoMode.success;
+  late Future<WebDavCheckReport> _reportFuture;
 
   @override
   void initState() {
     super.initState();
-    _reportFuture = _buildDemoService().run(listPath: 'config');
+    _reportFuture = _buildDemoService(_mode).run(listPath: 'config');
   }
 
   @override
@@ -28,40 +31,76 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
         body: FutureBuilder<WebDavCheckReport>(
           future: _reportFuture,
           builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            final report = snapshot.data!;
+            final report = snapshot.data;
             return ListView(
               padding: const EdgeInsets.all(16),
               children: [
                 Card(
-                  child: ListTile(
-                    leading: Icon(
-                      report.ok ? Icons.check_circle_outline : Icons.info_outline,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Demo scenario'),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          children: [
+                            ChoiceChip(
+                              label: const Text('Success'),
+                              selected: _mode == _WebDavCheckDemoMode.success,
+                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.success),
+                            ),
+                            ChoiceChip(
+                              label: const Text('Missing root'),
+                              selected: _mode == _WebDavCheckDemoMode.missingRoot,
+                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.missingRoot),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    title: const Text('WebDAV check preview'),
-                    subtitle: Text(report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'),
                   ),
                 ),
                 const SizedBox(height: 12),
-                ...report.items.map(
-                  (item) => Card(
+                if (report == null)
+                  const Center(child: CircularProgressIndicator())
+                else ...[
+                  Card(
                     child: ListTile(
-                      leading: Icon(item.ok ? Icons.check_outlined : Icons.error_outline),
-                      title: Text(item.title),
-                      subtitle: Text(item.detail),
-                      trailing: item.statusCode == null ? null : Text('${item.statusCode}'),
+                      leading: Icon(
+                        report.ok ? Icons.check_circle_outline : Icons.info_outline,
+                      ),
+                      title: const Text('WebDAV check preview'),
+                      subtitle: Text(report.ok ? 'All demo checks passed.' : 'Some demo checks need attention.'),
                     ),
                   ),
-                ),
+                  const SizedBox(height: 12),
+                  ...report.items.map(
+                    (item) => Card(
+                      child: ListTile(
+                        leading: Icon(item.ok ? Icons.check_outlined : Icons.error_outline),
+                        title: Text(item.title),
+                        subtitle: Text(item.detail),
+                        trailing: item.statusCode == null ? null : Text('${item.statusCode}'),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             );
           },
         ),
       );
 
-  WebDavCheckService _buildDemoService() {
+  void _selectMode(_WebDavCheckDemoMode mode) {
+    setState(() {
+      _mode = mode;
+      _reportFuture = _buildDemoService(mode).run(listPath: 'config');
+    });
+  }
+
+  WebDavCheckService _buildDemoService(_WebDavCheckDemoMode mode) {
     const body = '''
 <d:multistatus xmlns:d="DAV:">
   <d:response>
@@ -71,16 +110,18 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
 </d:multistatus>
 ''';
     final transport = FakeHttpTransport();
-    transport.responses['https://example.invalid/dav/'] = const HttpResponseDescriptor(
-      statusCode: 207,
-      headers: {},
+    transport.responses['https://example.invalid/dav/'] = HttpResponseDescriptor(
+      statusCode: mode == _WebDavCheckDemoMode.success ? 207 : 404,
+      headers: const {},
       body: '',
     );
-    transport.responses['https://example.invalid/dav/config'] = const HttpResponseDescriptor(
-      statusCode: 207,
-      headers: {},
-      body: body,
-    );
+    if (mode == _WebDavCheckDemoMode.success) {
+      transport.responses['https://example.invalid/dav/config'] = const HttpResponseDescriptor(
+        statusCode: 207,
+        headers: {},
+        body: body,
+      );
+    }
     final client = TransportWebDavClient(
       builder: WebDavRequestBuilder(baseUrl: Uri.parse('https://example.invalid/dav')),
       transport: transport,
