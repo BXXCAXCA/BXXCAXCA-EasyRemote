@@ -39,6 +39,8 @@ void main() {
     final report = await buildService(transport).run(listPath: 'config');
 
     expect(report.ok, isTrue);
+    expect(report.checkedAtIso, isNotEmpty);
+    expect(DateTime.tryParse(report.checkedAtIso), isNotNull);
     expect(report.items, hasLength(2));
     expect(report.items.map((item) => item.id), containsAll(['ping', 'list']));
   });
@@ -54,6 +56,7 @@ void main() {
     final report = await buildService(transport).run(listPath: 'config');
 
     expect(report.ok, isFalse);
+    expect(report.checkedAtIso, isNotEmpty);
     expect(report.items.first.errorCode, AppErrorCode.authRequired);
     expect(report.items.last.id, 'list');
     expect(report.items.last.ok, isFalse);
