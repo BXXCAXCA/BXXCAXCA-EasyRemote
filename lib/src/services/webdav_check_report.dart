@@ -16,6 +16,8 @@ class WebDavCheckItem {
   final String detail;
   final int? statusCode;
   final AppErrorCode? errorCode;
+
+  String get statusLabel => ok ? 'OK' : 'Needs attention';
 }
 
 class WebDavCheckReport {
