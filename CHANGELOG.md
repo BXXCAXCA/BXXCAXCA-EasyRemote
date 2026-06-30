@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.41.0
+
+- Bumped package version to 0.41.0+41.
+- Added WebDAV empty folder demo mode.
+- Displayed successful zero-resource listing behavior on the preview page.
+- Expanded WebDAV check page tests for the empty folder scenario.
+
 ## 0.40.0
 
 - Bumped package version to 0.40.0+40.
@@ -176,7 +183,6 @@
 - Added sync plan service behavior test.
 - Added release prep document.
 - Added route source direct test.
-- Added Phase 22 notes.
 
 ## 0.19.0
 
