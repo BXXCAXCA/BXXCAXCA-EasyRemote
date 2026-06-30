@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.38.0
+
+- Bumped package version to 0.38.0+38.
+- Added checked-at timestamp to WebDAV check reports.
+- Displayed WebDAV check timestamp on the preview page.
+- Expanded WebDAV check service and page tests for timestamp behavior.
+
 ## 0.37.0
 
 - Bumped package version to 0.37.0+37.
