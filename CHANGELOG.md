@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.37.0
+
+- Bumped package version to 0.37.0+37.
+- Added WebDAV check refresh action.
+- Reused current demo mode when refreshing the WebDAV check page.
+- Expanded WebDAV check page tests for refresh behavior.
+
 ## 0.36.0
 
 - Bumped package version to 0.36.0+36.
