@@ -16,6 +16,7 @@ void main() {
     expect(find.text('Server reachability'), findsOneWidget);
     expect(find.text('Directory listing'), findsOneWidget);
     expect(find.textContaining('All demo checks passed.'), findsOneWidget);
+    expect(find.text('OK'), findsNWidgets(2));
   });
 
   testWidgets('webdav check page switches to missing root demo report', (tester) async {
@@ -27,6 +28,7 @@ void main() {
 
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
+    expect(find.text('Needs attention'), findsNWidgets(2));
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
@@ -42,6 +44,7 @@ void main() {
 
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
+    expect(find.text('Needs attention'), findsNWidgets(2));
     expect(find.text('Remote resource was not found. Status: 404.'), findsOneWidget);
   });
 }
