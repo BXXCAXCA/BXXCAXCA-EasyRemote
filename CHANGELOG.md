@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.46.0
+
+- Bumped package version to 0.46.0+46.
+- Added WebDAV check demo service.
+- Moved WebDAV check demo response setup out of the page.
+- Exported WebDAV check demo service from service barrel.
+- Added demo service and barrel export tests.
+
 ## 0.45.0
 
 - Bumped package version to 0.45.0+45.
@@ -299,7 +307,6 @@
 - Added import check model and service.
 - Added conflict resolution page scaffold.
 - Added import check page scaffold.
-- Added Phase 9 docs and tests.
 
 ## 0.8.0
 
