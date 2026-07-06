@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.51.0
+
+- Bumped package version to 0.51.0+51.
+- Added expected outcomes to WebDAV check demo modes.
+- Displayed the selected demo expected outcome on the WebDAV check page.
+- Added demo expected outcome and page display tests.
+
 ## 0.50.0
 
 - Bumped package version to 0.50.0+50.
