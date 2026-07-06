@@ -65,6 +65,22 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
         return 'Check the base URL and remote root path.';
     }
   }
+
+  int get expectedStatusCode {
+    switch (this) {
+      case WebDavCheckDemoMode.authRequired:
+        return 401;
+      case WebDavCheckDemoMode.forbidden:
+        return 403;
+      case WebDavCheckDemoMode.serverError:
+        return 500;
+      case WebDavCheckDemoMode.missingRoot:
+        return 404;
+      case WebDavCheckDemoMode.success:
+      case WebDavCheckDemoMode.emptyFolder:
+        return 207;
+    }
+  }
 }
 
 class WebDavCheckDemoService {
@@ -91,19 +107,13 @@ class WebDavCheckDemoService {
 ''';
     final transport = FakeHttpTransport();
     transport.responses['https://example.invalid/dav/'] = HttpResponseDescriptor(
-      statusCode: switch (mode) {
-        WebDavCheckDemoMode.authRequired => 401,
-        WebDavCheckDemoMode.forbidden => 403,
-        WebDavCheckDemoMode.serverError => 500,
-        WebDavCheckDemoMode.missingRoot => 404,
-        _ => 207,
-      },
+      statusCode: mode.expectedStatusCode,
       headers: const {},
       body: '',
     );
     if (mode == WebDavCheckDemoMode.success || mode == WebDavCheckDemoMode.emptyFolder) {
       transport.responses['https://example.invalid/dav/config'] = HttpResponseDescriptor(
-        statusCode: 207,
+        statusCode: mode.expectedStatusCode,
         headers: const {},
         body: mode == WebDavCheckDemoMode.emptyFolder ? emptyBody : body,
       );
