@@ -97,6 +97,19 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
         return '404 Not found';
     }
   }
+
+  String get expectedOutcome {
+    switch (this) {
+      case WebDavCheckDemoMode.success:
+      case WebDavCheckDemoMode.emptyFolder:
+        return 'Pass';
+      case WebDavCheckDemoMode.authRequired:
+      case WebDavCheckDemoMode.forbidden:
+      case WebDavCheckDemoMode.serverError:
+      case WebDavCheckDemoMode.missingRoot:
+        return 'Needs attention';
+    }
+  }
 }
 
 class WebDavCheckDemoService {
