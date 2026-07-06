@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.42.0
+
+- Bumped package version to 0.42.0+42.
+- Added WebDAV auth required demo mode.
+- Displayed mapped auth status behavior on the WebDAV check page.
+- Expanded WebDAV check page tests for the auth required scenario.
+
 ## 0.41.0
 
 - Bumped package version to 0.41.0+41.
