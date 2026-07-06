@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.45.0
+
+- Bumped package version to 0.45.0+45.
+- Added permission denied error code.
+- Mapped WebDAV 403 responses to permission denied instead of auth required.
+- Updated WebDAV status, error code, and page tests for mapped forbidden text.
+
 ## 0.44.0
 
 - Bumped package version to 0.44.0+44.
