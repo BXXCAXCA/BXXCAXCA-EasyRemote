@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.49.0
+
+- Bumped package version to 0.49.0+49.
+- Added expected status codes to WebDAV check demo modes.
+- Reused expected status codes when building WebDAV demo responses.
+- Displayed the selected demo expected status on the WebDAV check page.
+- Added demo expected status and page display tests.
+
 ## 0.48.0
 
 - Bumped package version to 0.48.0+48.
