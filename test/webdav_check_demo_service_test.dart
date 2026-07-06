@@ -48,6 +48,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.expectedStatusText, '404 Not found');
   });
 
+  test('demo mode expected outcomes are stable', () {
+    expect(WebDavCheckDemoMode.success.expectedOutcome, 'Pass');
+    expect(WebDavCheckDemoMode.emptyFolder.expectedOutcome, 'Pass');
+    expect(WebDavCheckDemoMode.authRequired.expectedOutcome, 'Needs attention');
+    expect(WebDavCheckDemoMode.forbidden.expectedOutcome, 'Needs attention');
+    expect(WebDavCheckDemoMode.serverError.expectedOutcome, 'Needs attention');
+    expect(WebDavCheckDemoMode.missingRoot.expectedOutcome, 'Needs attention');
+  });
+
   test('success demo returns passing report', () async {
     final report = await const WebDavCheckDemoService().run(mode: WebDavCheckDemoMode.success);
 
