@@ -81,6 +81,22 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
         return 207;
     }
   }
+
+  String get expectedStatusText {
+    switch (this) {
+      case WebDavCheckDemoMode.success:
+      case WebDavCheckDemoMode.emptyFolder:
+        return '207 Multi-Status';
+      case WebDavCheckDemoMode.authRequired:
+        return '401 Unauthorized';
+      case WebDavCheckDemoMode.forbidden:
+        return '403 Forbidden';
+      case WebDavCheckDemoMode.serverError:
+        return '500 Server error';
+      case WebDavCheckDemoMode.missingRoot:
+        return '404 Not found';
+    }
+  }
 }
 
 class WebDavCheckDemoService {
