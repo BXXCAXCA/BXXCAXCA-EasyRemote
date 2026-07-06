@@ -30,6 +30,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.suggestedAction, 'Check the base URL and remote root path.');
   });
 
+  test('demo mode expected status codes are stable', () {
+    expect(WebDavCheckDemoMode.success.expectedStatusCode, 207);
+    expect(WebDavCheckDemoMode.emptyFolder.expectedStatusCode, 207);
+    expect(WebDavCheckDemoMode.authRequired.expectedStatusCode, 401);
+    expect(WebDavCheckDemoMode.forbidden.expectedStatusCode, 403);
+    expect(WebDavCheckDemoMode.serverError.expectedStatusCode, 500);
+    expect(WebDavCheckDemoMode.missingRoot.expectedStatusCode, 404);
+  });
+
   test('success demo returns passing report', () async {
     final report = await const WebDavCheckDemoService().run(mode: WebDavCheckDemoMode.success);
 
