@@ -48,6 +48,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.expectedStatusText, '404 Not found');
   });
 
+  test('demo mode expected ok flags are stable', () {
+    expect(WebDavCheckDemoMode.success.expectedOk, isTrue);
+    expect(WebDavCheckDemoMode.emptyFolder.expectedOk, isTrue);
+    expect(WebDavCheckDemoMode.authRequired.expectedOk, isFalse);
+    expect(WebDavCheckDemoMode.forbidden.expectedOk, isFalse);
+    expect(WebDavCheckDemoMode.serverError.expectedOk, isFalse);
+    expect(WebDavCheckDemoMode.missingRoot.expectedOk, isFalse);
+  });
+
   test('demo mode expected outcomes are stable', () {
     expect(WebDavCheckDemoMode.success.expectedOutcome, 'Pass');
     expect(WebDavCheckDemoMode.emptyFolder.expectedOutcome, 'Pass');
