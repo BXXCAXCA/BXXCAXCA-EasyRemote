@@ -13,6 +13,7 @@ void main() {
     expect(find.text('WebDAV check preview'), findsOneWidget);
     expect(find.text('Empty folder'), findsOneWidget);
     expect(find.text('Auth required'), findsOneWidget);
+    expect(find.text('Server error'), findsOneWidget);
     expect(find.textContaining('2/2 checks passed'), findsOneWidget);
     expect(find.textContaining('Last checked:'), findsOneWidget);
     expect(find.text('Server reachability'), findsOneWidget);
@@ -45,6 +46,20 @@ void main() {
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
     expect(find.text('Authentication is required. Status: 401.'), findsOneWidget);
+    expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
+  });
+
+  testWidgets('webdav check page switches to server error demo report', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: WebDavCheckPage()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Server error'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
+    expect(find.textContaining('0/2 checks passed'), findsOneWidget);
+    expect(find.text('Needs attention'), findsNWidgets(2));
+    expect(find.text('Unknown error. Status: 500.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
 
