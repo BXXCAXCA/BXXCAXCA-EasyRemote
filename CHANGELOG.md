@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.50.0
+
+- Bumped package version to 0.50.0+50.
+- Added readable expected response text to WebDAV check demo modes.
+- Displayed the selected demo expected response on the WebDAV check page.
+- Added demo expected response and page display tests.
+
 ## 0.49.0
 
 - Bumped package version to 0.49.0+49.
