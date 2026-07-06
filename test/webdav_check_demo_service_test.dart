@@ -39,6 +39,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.expectedStatusCode, 404);
   });
 
+  test('demo mode expected status text is stable', () {
+    expect(WebDavCheckDemoMode.success.expectedStatusText, '207 Multi-Status');
+    expect(WebDavCheckDemoMode.emptyFolder.expectedStatusText, '207 Multi-Status');
+    expect(WebDavCheckDemoMode.authRequired.expectedStatusText, '401 Unauthorized');
+    expect(WebDavCheckDemoMode.forbidden.expectedStatusText, '403 Forbidden');
+    expect(WebDavCheckDemoMode.serverError.expectedStatusText, '500 Server error');
+    expect(WebDavCheckDemoMode.missingRoot.expectedStatusText, '404 Not found');
+  });
+
   test('success demo returns passing report', () async {
     final report = await const WebDavCheckDemoService().run(mode: WebDavCheckDemoMode.success);
 
