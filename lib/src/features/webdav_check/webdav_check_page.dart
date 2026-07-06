@@ -64,6 +64,8 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                         const SizedBox(height: 4),
                         Text('Expected response: ${_mode.expectedStatusText}'),
                         const SizedBox(height: 4),
+                        Text('Expected outcome: ${_mode.expectedOutcome}'),
+                        const SizedBox(height: 4),
                         Text('Suggested action: ${_mode.suggestedAction}'),
                       ],
                     ),
