@@ -3,10 +3,12 @@ import 'package:easyremote/src/models/app_error_code.dart';
 import 'package:easyremote/src/services/webdav_status_mapper.dart';
 
 void main() {
-  test('maps auth statuses', () {
-    const mapper = WebDavStatusMapper();
-    expect(mapper.mapStatus(401), AppErrorCode.authRequired);
-    expect(mapper.mapStatus(403), AppErrorCode.authRequired);
+  test('maps auth status', () {
+    expect(const WebDavStatusMapper().mapStatus(401), AppErrorCode.authRequired);
+  });
+
+  test('maps forbidden status', () {
+    expect(const WebDavStatusMapper().mapStatus(403), AppErrorCode.permissionDenied);
   });
 
   test('maps not found status', () {
