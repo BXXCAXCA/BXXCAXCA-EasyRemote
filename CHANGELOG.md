@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.47.0
+
+- Bumped package version to 0.47.0+47.
+- Added WebDAV check demo mode descriptions.
+- Displayed the selected demo description on the WebDAV check page.
+- Added demo description and page display tests.
+
 ## 0.46.0
 
 - Bumped package version to 0.46.0+46.
