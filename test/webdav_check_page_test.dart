@@ -10,6 +10,7 @@ void main() {
     expect(find.text('WebDAV Check'), findsOneWidget);
     expect(find.byTooltip('Refresh check'), findsOneWidget);
     expect(find.text('Demo scenario'), findsOneWidget);
+    expect(find.text('Server is reachable and config contains one resource.'), findsOneWidget);
     expect(find.text('WebDAV check preview'), findsOneWidget);
     expect(find.text('Empty folder'), findsOneWidget);
     expect(find.text('Auth required'), findsOneWidget);
@@ -30,6 +31,7 @@ void main() {
     await tester.tap(find.text('Empty folder'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server is reachable and config is empty.'), findsOneWidget);
     expect(find.textContaining('All demo checks passed.'), findsOneWidget);
     expect(find.textContaining('2/2 checks passed'), findsOneWidget);
     expect(find.text('Found 0 resources at config.'), findsOneWidget);
@@ -43,6 +45,7 @@ void main() {
     await tester.tap(find.text('Auth required'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server requires authentication before listing.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -57,6 +60,7 @@ void main() {
     await tester.tap(find.text('Forbidden'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server denies access for the current account.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -71,6 +75,7 @@ void main() {
     await tester.tap(find.text('Server error'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server returns a temporary failure.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -85,6 +90,7 @@ void main() {
     await tester.tap(find.text('Missing root'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server root path cannot be found.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -101,6 +107,7 @@ void main() {
     await tester.tap(find.byTooltip('Refresh check'));
     await tester.pumpAndSettle();
 
+    expect(find.text('Server root path cannot be found.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
