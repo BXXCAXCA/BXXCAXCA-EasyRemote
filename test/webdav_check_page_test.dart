@@ -60,7 +60,7 @@ void main() {
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
-    expect(find.text('Unknown error. Status: 403.'), findsOneWidget);
+    expect(find.text('Permission denied. Status: 403.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
 
@@ -74,7 +74,7 @@ void main() {
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
-    expect(find.text('Unknown error. Status: 500.'), findsOneWidget);
+    expect(find.text('Network is unavailable. Status: 500.'), findsOneWidget);
     expect(find.text('Skipped because server reachability did not pass.'), findsOneWidget);
   });
 
