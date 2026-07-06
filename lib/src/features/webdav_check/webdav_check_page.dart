@@ -6,7 +6,7 @@ import '../../services/webdav_check_report.dart';
 import '../../services/webdav_check_service.dart';
 import '../../services/webdav_request_builder.dart';
 
-enum _WebDavCheckDemoMode { success, emptyFolder, authRequired, missingRoot }
+enum _WebDavCheckDemoMode { success, emptyFolder, authRequired, serverError, missingRoot }
 
 class WebDavCheckPage extends StatefulWidget {
   const WebDavCheckPage({super.key});
@@ -69,6 +69,11 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                               label: const Text('Auth required'),
                               selected: _mode == _WebDavCheckDemoMode.authRequired,
                               onSelected: (_) => _selectMode(_WebDavCheckDemoMode.authRequired),
+                            ),
+                            ChoiceChip(
+                              label: const Text('Server error'),
+                              selected: _mode == _WebDavCheckDemoMode.serverError,
+                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.serverError),
                             ),
                             ChoiceChip(
                               label: const Text('Missing root'),
@@ -153,6 +158,7 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
     transport.responses['https://example.invalid/dav/'] = HttpResponseDescriptor(
       statusCode: switch (mode) {
         _WebDavCheckDemoMode.authRequired => 401,
+        _WebDavCheckDemoMode.serverError => 500,
         _WebDavCheckDemoMode.missingRoot => 404,
         _ => 207,
       },
