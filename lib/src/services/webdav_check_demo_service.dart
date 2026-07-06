@@ -48,6 +48,23 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
         return 'Server root path cannot be found.';
     }
   }
+
+  String get suggestedAction {
+    switch (this) {
+      case WebDavCheckDemoMode.success:
+        return 'Continue with sync preview or save configuration.';
+      case WebDavCheckDemoMode.emptyFolder:
+        return 'Create initial config files before syncing.';
+      case WebDavCheckDemoMode.authRequired:
+        return 'Check username, password, token, or app password settings.';
+      case WebDavCheckDemoMode.forbidden:
+        return 'Verify account permissions for the selected WebDAV path.';
+      case WebDavCheckDemoMode.serverError:
+        return 'Retry later or check the WebDAV server status.';
+      case WebDavCheckDemoMode.missingRoot:
+        return 'Check the base URL and remote root path.';
+    }
+  }
 }
 
 class WebDavCheckDemoService {
