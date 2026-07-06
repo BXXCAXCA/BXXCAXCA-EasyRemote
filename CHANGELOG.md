@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.52.0
+
+- Bumped package version to 0.52.0+52.
+- Added WebDAV demo expected ok flag.
+- Derived expected outcome text from the expected ok flag.
+- Added expected ok tests for WebDAV demo modes.
+
 ## 0.51.0
 
 - Bumped package version to 0.51.0+51.
