@@ -12,6 +12,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.label, 'Missing root');
   });
 
+  test('demo mode descriptions are stable', () {
+    expect(WebDavCheckDemoMode.success.description, 'Server is reachable and config contains one resource.');
+    expect(WebDavCheckDemoMode.emptyFolder.description, 'Server is reachable and config is empty.');
+    expect(WebDavCheckDemoMode.authRequired.description, 'Server requires authentication before listing.');
+    expect(WebDavCheckDemoMode.forbidden.description, 'Server denies access for the current account.');
+    expect(WebDavCheckDemoMode.serverError.description, 'Server returns a temporary failure.');
+    expect(WebDavCheckDemoMode.missingRoot.description, 'Server root path cannot be found.');
+  });
+
   test('success demo returns passing report', () async {
     final report = await const WebDavCheckDemoService().run(mode: WebDavCheckDemoMode.success);
 
