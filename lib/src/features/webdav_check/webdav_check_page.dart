@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../models/http_request_descriptor.dart';
-import '../../services/http_transport.dart';
-import '../../services/transport_webdav_client.dart';
+import '../../services/webdav_check_demo_service.dart';
 import '../../services/webdav_check_report.dart';
-import '../../services/webdav_check_service.dart';
-import '../../services/webdav_request_builder.dart';
-
-enum _WebDavCheckDemoMode { success, emptyFolder, authRequired, forbidden, serverError, missingRoot }
 
 class WebDavCheckPage extends StatefulWidget {
   const WebDavCheckPage({super.key});
@@ -16,7 +10,8 @@ class WebDavCheckPage extends StatefulWidget {
 }
 
 class _WebDavCheckPageState extends State<WebDavCheckPage> {
-  _WebDavCheckDemoMode _mode = _WebDavCheckDemoMode.success;
+  final WebDavCheckDemoService _demoService = const WebDavCheckDemoService();
+  WebDavCheckDemoMode _mode = WebDavCheckDemoMode.success;
   late Future<WebDavCheckReport> _reportFuture;
 
   @override
@@ -54,38 +49,15 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                         const SizedBox(height: 8),
                         Wrap(
                           spacing: 8,
-                          children: [
-                            ChoiceChip(
-                              label: const Text('Success'),
-                              selected: _mode == _WebDavCheckDemoMode.success,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.success),
-                            ),
-                            ChoiceChip(
-                              label: const Text('Empty folder'),
-                              selected: _mode == _WebDavCheckDemoMode.emptyFolder,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.emptyFolder),
-                            ),
-                            ChoiceChip(
-                              label: const Text('Auth required'),
-                              selected: _mode == _WebDavCheckDemoMode.authRequired,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.authRequired),
-                            ),
-                            ChoiceChip(
-                              label: const Text('Forbidden'),
-                              selected: _mode == _WebDavCheckDemoMode.forbidden,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.forbidden),
-                            ),
-                            ChoiceChip(
-                              label: const Text('Server error'),
-                              selected: _mode == _WebDavCheckDemoMode.serverError,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.serverError),
-                            ),
-                            ChoiceChip(
-                              label: const Text('Missing root'),
-                              selected: _mode == _WebDavCheckDemoMode.missingRoot,
-                              onSelected: (_) => _selectMode(_WebDavCheckDemoMode.missingRoot),
-                            ),
-                          ],
+                          children: WebDavCheckDemoMode.values
+                              .map(
+                                (mode) => ChoiceChip(
+                                  label: Text(mode.label),
+                                  selected: _mode == mode,
+                                  onSelected: (_) => _selectMode(mode),
+                                ),
+                              )
+                              .toList(growable: false),
                         ),
                       ],
                     ),
@@ -137,51 +109,12 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
     });
   }
 
-  void _selectMode(_WebDavCheckDemoMode mode) {
+  void _selectMode(WebDavCheckDemoMode mode) {
     setState(() {
       _mode = mode;
       _reportFuture = _runCheck(mode);
     });
   }
 
-  Future<WebDavCheckReport> _runCheck(_WebDavCheckDemoMode mode) => _buildDemoService(mode).run(listPath: 'config');
-
-  WebDavCheckService _buildDemoService(_WebDavCheckDemoMode mode) {
-    const body = '''
-<d:multistatus xmlns:d="DAV:">
-  <d:response>
-    <d:href>/dav/config/settings.json</d:href>
-    <d:propstat><d:prop><d:getcontentlength>2</d:getcontentlength></d:prop></d:propstat>
-  </d:response>
-</d:multistatus>
-''';
-    const emptyBody = '''
-<d:multistatus xmlns:d="DAV:">
-</d:multistatus>
-''';
-    final transport = FakeHttpTransport();
-    transport.responses['https://example.invalid/dav/'] = HttpResponseDescriptor(
-      statusCode: switch (mode) {
-        _WebDavCheckDemoMode.authRequired => 401,
-        _WebDavCheckDemoMode.forbidden => 403,
-        _WebDavCheckDemoMode.serverError => 500,
-        _WebDavCheckDemoMode.missingRoot => 404,
-        _ => 207,
-      },
-      headers: const {},
-      body: '',
-    );
-    if (mode == _WebDavCheckDemoMode.success || mode == _WebDavCheckDemoMode.emptyFolder) {
-      transport.responses['https://example.invalid/dav/config'] = HttpResponseDescriptor(
-        statusCode: 207,
-        headers: const {},
-        body: mode == _WebDavCheckDemoMode.emptyFolder ? emptyBody : body,
-      );
-    }
-    final client = TransportWebDavClient(
-      builder: WebDavRequestBuilder(baseUrl: Uri.parse('https://example.invalid/dav')),
-      transport: transport,
-    );
-    return WebDavCheckService(client: client);
-  }
+  Future<WebDavCheckReport> _runCheck(WebDavCheckDemoMode mode) => _demoService.run(mode: mode);
 }
