@@ -21,6 +21,15 @@ void main() {
     expect(WebDavCheckDemoMode.missingRoot.description, 'Server root path cannot be found.');
   });
 
+  test('demo mode suggested actions are stable', () {
+    expect(WebDavCheckDemoMode.success.suggestedAction, 'Continue with sync preview or save configuration.');
+    expect(WebDavCheckDemoMode.emptyFolder.suggestedAction, 'Create initial config files before syncing.');
+    expect(WebDavCheckDemoMode.authRequired.suggestedAction, 'Check username, password, token, or app password settings.');
+    expect(WebDavCheckDemoMode.forbidden.suggestedAction, 'Verify account permissions for the selected WebDAV path.');
+    expect(WebDavCheckDemoMode.serverError.suggestedAction, 'Retry later or check the WebDAV server status.');
+    expect(WebDavCheckDemoMode.missingRoot.suggestedAction, 'Check the base URL and remote root path.');
+  });
+
   test('success demo returns passing report', () async {
     final report = await const WebDavCheckDemoService().run(mode: WebDavCheckDemoMode.success);
 
