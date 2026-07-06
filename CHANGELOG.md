@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.44.0
+
+- Bumped package version to 0.44.0+44.
+- Added WebDAV forbidden demo mode.
+- Displayed mapped forbidden status behavior on the WebDAV check page.
+- Expanded WebDAV check page tests for the forbidden scenario.
+
 ## 0.43.0
 
 - Bumped package version to 0.43.0+43.
