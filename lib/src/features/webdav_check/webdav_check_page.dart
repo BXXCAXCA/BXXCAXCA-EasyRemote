@@ -59,6 +59,8 @@ class _WebDavCheckPageState extends State<WebDavCheckPage> {
                               )
                               .toList(growable: false),
                         ),
+                        const SizedBox(height: 8),
+                        Text(_mode.description),
                       ],
                     ),
                   ),
