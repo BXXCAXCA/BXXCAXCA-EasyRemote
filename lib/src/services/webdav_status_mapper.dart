@@ -4,8 +4,11 @@ class WebDavStatusMapper {
   const WebDavStatusMapper();
 
   AppErrorCode mapStatus(int statusCode) {
-    if (statusCode == 401 || statusCode == 403) {
+    if (statusCode == 401) {
       return AppErrorCode.authRequired;
+    }
+    if (statusCode == 403) {
+      return AppErrorCode.permissionDenied;
     }
     if (statusCode == 404) {
       return AppErrorCode.remoteNotFound;
