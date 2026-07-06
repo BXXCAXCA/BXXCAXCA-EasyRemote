@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.48.0
+
+- Bumped package version to 0.48.0+48.
+- Added suggested actions to WebDAV check demo modes.
+- Displayed the selected demo suggested action on the WebDAV check page.
+- Added demo suggested action and page display tests.
+
 ## 0.47.0
 
 - Bumped package version to 0.47.0+47.
@@ -313,7 +320,6 @@
 - Added sync queue service.
 - Added import check model and service.
 - Added conflict resolution page scaffold.
-- Added import check page scaffold.
 
 ## 0.8.0
 
@@ -324,7 +330,6 @@
 - Added Sync Plan page.
 - Added migration status model, service, and page.
 - Added HTTP WebDAV client boundary.
-- Added Phase 8 docs and tests.
 
 ## 0.6.0
 
