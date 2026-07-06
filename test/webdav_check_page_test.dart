@@ -11,6 +11,7 @@ void main() {
     expect(find.byTooltip('Refresh check'), findsOneWidget);
     expect(find.text('Demo scenario'), findsOneWidget);
     expect(find.text('Server is reachable and config contains one resource.'), findsOneWidget);
+    expect(find.text('Suggested action: Continue with sync preview or save configuration.'), findsOneWidget);
     expect(find.text('WebDAV check preview'), findsOneWidget);
     expect(find.text('Empty folder'), findsOneWidget);
     expect(find.text('Auth required'), findsOneWidget);
@@ -32,6 +33,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server is reachable and config is empty.'), findsOneWidget);
+    expect(find.text('Suggested action: Create initial config files before syncing.'), findsOneWidget);
     expect(find.textContaining('All demo checks passed.'), findsOneWidget);
     expect(find.textContaining('2/2 checks passed'), findsOneWidget);
     expect(find.text('Found 0 resources at config.'), findsOneWidget);
@@ -46,6 +48,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server requires authentication before listing.'), findsOneWidget);
+    expect(find.text('Suggested action: Check username, password, token, or app password settings.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -61,6 +64,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server denies access for the current account.'), findsOneWidget);
+    expect(find.text('Suggested action: Verify account permissions for the selected WebDAV path.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -76,6 +80,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server returns a temporary failure.'), findsOneWidget);
+    expect(find.text('Suggested action: Retry later or check the WebDAV server status.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -91,6 +96,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server root path cannot be found.'), findsOneWidget);
+    expect(find.text('Suggested action: Check the base URL and remote root path.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
@@ -108,6 +114,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Server root path cannot be found.'), findsOneWidget);
+    expect(find.text('Suggested action: Check the base URL and remote root path.'), findsOneWidget);
     expect(find.textContaining('Some demo checks need attention.'), findsOneWidget);
     expect(find.textContaining('0/2 checks passed'), findsOneWidget);
     expect(find.text('Needs attention'), findsNWidgets(2));
