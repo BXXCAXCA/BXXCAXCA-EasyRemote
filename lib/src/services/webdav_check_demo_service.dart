@@ -31,6 +31,23 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
         return 'Missing root';
     }
   }
+
+  String get description {
+    switch (this) {
+      case WebDavCheckDemoMode.success:
+        return 'Server is reachable and config contains one resource.';
+      case WebDavCheckDemoMode.emptyFolder:
+        return 'Server is reachable and config is empty.';
+      case WebDavCheckDemoMode.authRequired:
+        return 'Server requires authentication before listing.';
+      case WebDavCheckDemoMode.forbidden:
+        return 'Server denies access for the current account.';
+      case WebDavCheckDemoMode.serverError:
+        return 'Server returns a temporary failure.';
+      case WebDavCheckDemoMode.missingRoot:
+        return 'Server root path cannot be found.';
+    }
+  }
 }
 
 class WebDavCheckDemoService {
