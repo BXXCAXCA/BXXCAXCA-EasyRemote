@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.43.0
+
+- Bumped package version to 0.43.0+43.
+- Added WebDAV server error demo mode.
+- Displayed mapped server status behavior on the WebDAV check page.
+- Expanded WebDAV check page tests for the server error scenario.
+
 ## 0.42.0
 
 - Bumped package version to 0.42.0+42.
