@@ -98,18 +98,20 @@ extension WebDavCheckDemoModeLabel on WebDavCheckDemoMode {
     }
   }
 
-  String get expectedOutcome {
+  bool get expectedOk {
     switch (this) {
       case WebDavCheckDemoMode.success:
       case WebDavCheckDemoMode.emptyFolder:
-        return 'Pass';
+        return true;
       case WebDavCheckDemoMode.authRequired:
       case WebDavCheckDemoMode.forbidden:
       case WebDavCheckDemoMode.serverError:
       case WebDavCheckDemoMode.missingRoot:
-        return 'Needs attention';
+        return false;
     }
   }
+
+  String get expectedOutcome => expectedOk ? 'Pass' : 'Needs attention';
 }
 
 class WebDavCheckDemoService {
