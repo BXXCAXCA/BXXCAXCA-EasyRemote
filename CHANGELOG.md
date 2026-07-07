@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.53.0
+
+- Bumped package version to 0.53.0+53.
+- Added conversation handoff document for resuming development in a new chat.
+- Added session resume prompt document.
+- Added Phase 55 documentation.
+
 ## 0.52.0
 
 - Bumped package version to 0.52.0+52.
